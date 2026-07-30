@@ -12,6 +12,7 @@ import os
 import json
 from logging import Logger
 import emcee
+import pickle
 
 import numpy as np
 import pandas as pd
@@ -34,8 +35,8 @@ from .halo_object import RadioHalo
 from .processing import Processing
 
 #conversion int float 64
-from conversion_dict import scan_dict
-from conversion_dict import conv
+from .conversion_dict import scan_dict
+from .conversion_dict import conv
 
 if __name__ == "__main__":
     try:
@@ -57,7 +58,7 @@ class BaseFitting():
         _parent_: RadioHalo,
         data = None,
         model: str = "circle",
-        walkers: int = 100,
+        walkers: int = 200,
         steps: int = 1200,
         burntime = None,
         logger = None,
@@ -522,6 +523,9 @@ class SingleComponentFitting(BaseFitting):
         info["initial"] = best
         info["data"] = self.sampler.tolist()
         
+        with open('file_A1033.pkl', 'wb') as file:
+            pickle.dump(info, file)
+            
         scan_dict(info)
         conv(info)
         scan_dict(info)

@@ -2,8 +2,8 @@ import pickle
 import numpy
 import json
 
-with open('file.pkl', 'rb') as file:
-    info = pickle.load(file)
+#with open('file.pkl', 'rb') as file:
+#    info = pickle.load(file)
 
 def scan_dict(obj):
     print("-----BEGINNING SCAN OF DICTIONARY-----")
@@ -18,7 +18,7 @@ def scan_dict(obj):
         else :
             print(k, type(v))
                 
-scan_dict(info)
+#scan_dict(info)
 
 def conv(obj):
     print("-----BEGINNING CONVERSION OF FLOAT64 AND INT64 INTO FLOAT AND INT IN A DICTIONARY-----")
@@ -38,7 +38,7 @@ def conv(obj):
                     print("...converting ",i, type(v) ,k," list elemet from float64 to float...")
                     v[i]=float(item)
                     
-conv(info)
-scan_dict(info)
-with open(("test.json"), "w") as f:
-            json.dump(info, f, indent=4)
+#conv(info)
+#scan_dict(info)
+#with open(("test.json"), "w") as f:
+#json.dump(info, f, indent=4)
